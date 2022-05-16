@@ -11,7 +11,14 @@ class StringProducerService(
 ) {
 
     fun sendMessage(message: String) {
-        kafkaTemplate.send(topic, message)
+        kafkaTemplate.send(topic, message).addCallback({
+            println(
+                "Sent message=[$message] with offset=[${it!!.recordMetadata.offset()}] " +
+                    "and partition=[${it.recordMetadata.partition()}]"
+            )
+        }, {
+            println("Unable to send message=[$message] due to: ${it.message}")
+        })
     }
 
 }
