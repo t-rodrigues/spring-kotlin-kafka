@@ -1,2 +1,9 @@
 server:
   port: 8200
+
+spring:
+  application:
+    name: payment-svc
+  kafka:
+    producer:
+      bootstrap-servers: localhost:29092
