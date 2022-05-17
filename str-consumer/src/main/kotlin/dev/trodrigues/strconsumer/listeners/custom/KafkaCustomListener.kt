@@ -7,6 +7,7 @@ import org.springframework.kafka.annotation.KafkaListener
 @Target(AnnotationTarget.FUNCTION)
 @KafkaListener
 annotation class KafkaCustomListener(
+
     @get:AliasFor(
         annotation = KafkaListener::class,
         attribute = "topics"
@@ -20,5 +21,11 @@ annotation class KafkaCustomListener(
     @get:AliasFor(
         annotation = KafkaListener::class,
         attribute = "groupId"
-    ) val groupId: String = ""
+    ) val groupId: String = "",
+
+    @get:AliasFor(
+        annotation = KafkaListener::class,
+        attribute = "errorHandler"
+    ) val errorHandler: String = "errorCustomHandler"
+
 )

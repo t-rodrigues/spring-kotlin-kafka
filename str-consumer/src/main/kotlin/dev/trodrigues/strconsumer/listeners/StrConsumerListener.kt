@@ -9,6 +9,7 @@ class StrConsumerListener {
     @KafkaCustomListener(groupId = "group-1")
     fun create(message: String) {
         println("CREATE ::: Received message=[$message]")
+        throw IllegalArgumentException("EXCEPTION...")
     }
 
     @KafkaCustomListener(groupId = "group-1")
