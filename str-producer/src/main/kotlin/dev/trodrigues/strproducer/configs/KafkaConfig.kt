@@ -24,10 +24,9 @@ class KafkaConfig(
     }
 
     @Bean
-    fun kafkaTopics(): KafkaAdmin.NewTopics {
-        return KafkaAdmin.NewTopics(
+    fun kafkaTopics(): KafkaAdmin.NewTopics =
+        KafkaAdmin.NewTopics(
             TopicBuilder.name(topic).partitions(2).replicas(1).build()
         )
-    }
 
 }
